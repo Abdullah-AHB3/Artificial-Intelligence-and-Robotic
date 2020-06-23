@@ -1,0 +1,25 @@
+import cv2
+face_detect= cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#input:
+       # input video
+vidCap= cv2.VideoCapture('MN-test.mp4')
+
+while vidCap.isOpened():
+    _, imgFrame=vidCap.read()
+
+          # since this classifire deals with gray image,we need convert our video to gray
+    Gray= cv2.cvtColor(imgFrame, cv2.COLOR_BGR2GRAY)
+          #Apply classifire to the coverted video
+    Faces= face_detect.detectMultiScale(Gray,1.1,4)
+
+        # Detecting rectangle properties
+    for (x, y, w, h) in Faces:
+        cv2.rectangle(imgFrame, (x, y), (x+w, y+h), (0, 0, 255), 2)
+
+    #output
+    cv2.imshow('Person Detection', imgFrame)
+        #make window close only when 'q' is pressed
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+vidCap.release()

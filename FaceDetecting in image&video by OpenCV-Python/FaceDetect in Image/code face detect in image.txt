@@ -1,0 +1,18 @@
+import cv2
+face_detect= cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#input:
+       # input image
+People= cv2.imread('ppl.jpg')
+
+      # since this classifire deals with gray image,we need convert our image to gray
+Gray= cv2.cvtColor(People, cv2.COLOR_BGR2GRAY)
+      #Apply classifire to the coverted image
+Faces= face_detect.detectMultiScale(Gray,1.1,4)
+
+    # Detecting rectangle properties
+for (x, y, w, h) in Faces:
+    cv2.rectangle(People, (x, y), (x+w, y+h), (0, 0, 255), 2)
+
+#output
+cv2.imshow('People Detection', People)
+cv2.waitKey(0)
