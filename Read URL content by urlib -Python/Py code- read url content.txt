@@ -1,0 +1,7 @@
+from urllib.request import urlopen
+
+web =urlopen('https://wordpress.org/plugins/about/readme.txt')
+#print(str(web.read(), 'utf-8')) #show content with spaces by using "str" method
+print(web.read())               #show content without space
+
+
