@@ -1,0 +1,29 @@
+import numpy as np
+import cv2
+
+#Contours is the edges of an object
+# each contour have numpy array of (x,y) of boundary point for object
+
+#input
+mhOrigin=cv2.imread('ministry-of-health.png')
+mhLogo= cv2.imread('ministry-of-health.png')
+mhGray = cv2.cvtColor(mhLogo, cv2.COLOR_BGR2GRAY)
+
+ret, Threshold= cv2.threshold(mhGray,127,255,0)
+# Thresholding is a process of seprate object from its background
+
+contours, hierarchy = cv2.findContours(Threshold, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+print("Number of contours = " + str(len(contours)))
+
+#print(contours[0])   # This command will show you the point of contours
+
+      # point of contours will drawn by the next command
+cv2.drawContours(mhLogo, contours, -1, (0, 0, 255), 2)
+
+#Output
+while True:
+    cv2.imshow('MH Logo Contour', mhLogo)
+    cv2.imshow('Original MH Logo',mhOrigin)
+    Key= cv2.waitKey(0)
+    if Key & 0xFF == ord('q'):
+        break
