@@ -1,0 +1,12 @@
+udemy course=> ROS Basics: Program Robots!
+https://www.udemy.com/share/101GMwAEEZd1lQQHsC/
+
+ROS Tutorial Webpage
+create workspace:
+http://wiki.ros.org/catkin/workspaces
+
+create package:
+http://wiki.ros.org/ROS/Tutorials/CreatingPackage
+
+create publisher & subscriber Nodes:
+http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29
